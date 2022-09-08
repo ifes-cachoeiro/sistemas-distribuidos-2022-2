@@ -13,6 +13,7 @@ ID_MSG = 1
 ENTROU_SALA = False
 
 def server(udp):
+    global ENTROU_SALA
     orig = ("", PORT)
     udp.bind(orig)
     while True:
@@ -31,6 +32,8 @@ def server(udp):
 
 
 def client():
+    global ID_SALA
+    global ID_MSG
     print(f"Starting UDP Server on port {PORT}")
     udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     _thread.start_new_thread(server, (udp,))
@@ -39,7 +42,7 @@ def client():
     dest = (IP_SERVIDOR, PORT)
     nome = input("Informe o seu nickname-> ")
     try:
-        sala = int(input("Informe o nome da sala que deseja entrar-> "))
+        sala = int(input("Informe o ID da sala que deseja entrar-> "))
         ID_SALA = sala
         entrar_sala = { 
             "acao": 1, 
