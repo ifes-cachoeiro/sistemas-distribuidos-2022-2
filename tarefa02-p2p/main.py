@@ -79,7 +79,7 @@ def interface(udp, node):
             elif opc == 9:
                 sys.exit(0)
         except ValueError:
-            opc = 0(
+            opc = 0
 
 
 def main():
