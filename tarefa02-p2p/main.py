@@ -22,6 +22,24 @@ def servidor_p2p(udp, node):
     udp.bind(orig)
     while True:
         msg, cliente = udp.recvfrom(1024)
+        msg_decoded = msg.decode('utf-8')
+        string_dict = json.loads(msg_decoded)
+        if string_dict["codigo"] == 0:
+            pass
+        elif string_dict["codigo"] == 1:
+            pass
+        elif string_dict["codigo"] == 2:
+            pass
+        elif string_dict["codigo"] == 3:
+            pass
+        elif string_dict["codigo"] == 64:
+            pass
+        elif string_dict["codigo"] == 65:
+            pass
+        elif string_dict["codigo"] == 66:
+            pass
+        elif string_dict["codigo"] == 67:
+            pass
 
 
 def interface(node):
@@ -41,7 +59,11 @@ def interface(node):
             print("Rede P2P Inicializada!")
             input("Pressione ENTER para continuar")
         elif opc == 2:
-            pass
+            os.system("clear")
+            ip = input("Informe o IP do nó: ")
+            print(f"Enviando msg para {ip}")
+            # enviar pacote UDP para o endereço IP
+            input("Pressione ENTER para continuar")
         elif opc == 3:
             pass
         elif opc == 4:
