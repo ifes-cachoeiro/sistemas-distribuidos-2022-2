@@ -42,7 +42,7 @@ def servidor_p2p(udp, node):
             pass
 
 
-def interface(node):
+def interface(udp, node):
     while True:
         os.system("clear")
         print("######################################")
@@ -79,14 +79,14 @@ def interface(node):
             elif opc == 9:
                 sys.exit(0)
         except ValueError:
-            opc = 0
+            opc = 0(
 
 
 def main():
     udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     node = Node(ip=sys.argv[1])
     _thread.start_new_thread(servidor_p2p, (udp, node))
-    interface(node)
+    interface(udp, node)
 
 
 if __name__ == "__main__":
