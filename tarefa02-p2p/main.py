@@ -4,6 +4,7 @@ import socket
 import _thread
 import json
 import sys
+import os
 
 
 class Node:
@@ -25,7 +26,35 @@ def servidor_p2p(udp, node):
 
 def interface(node):
     while True:
-        pass
+        os.system("clear")
+        print("######################################")
+        print("# 1 - Criar uma nova rede P2P        #")
+        print("# 2 - Entrar em uma rede P2P         #")
+        print("# 3 - Sair da rede P2P               #")
+        print("# 4 - Imprimir informações do nó     #")
+        print("# 9 - Sair do programa               #")
+        print("######################################")
+        opc = int(input("=> "))
+        if opc == 1:
+            node.sucessor = {"id": node.id, "ip": node.ip}
+            node.antecessor = {"id": node.id, "ip": node.ip}
+            print("Rede P2P Inicializada!")
+            input("Pressione ENTER para continuar")
+        elif opc == 2:
+            pass
+        elif opc == 3:
+            pass
+        elif opc == 4:
+            os.system("clear")
+            print("#      Informações do Nó       #")
+            print(f"# ID: {node.id}")
+            print(f"# IP: {node.ip}")
+            print(f"# Sucessor: {node.sucessor}")
+            print(f"# Antecessor: {node.antecessor}")
+            print("#------------------------------#")
+            input("Pressione ENTER para continuar")
+        elif opc == 9:
+            sys.exit(0)
 
 
 def main():
