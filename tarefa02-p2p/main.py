@@ -22,11 +22,11 @@ class ServidorP2P:
     def __init__(self, ip=None) -> None:
         self.node = Node(ip=sys.argv[1])
         self.udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        self.__t1 = mp.Process(target=self.servidor_p2p)
+        self.__t1 = mp.Process(target=self.controle)
         self.__t1.start()
         self.interface()
 
-    def servidor_p2p(self) -> None:
+    def controle(self) -> None:
         print(f"=> Iniciando servidor P2P (ip={self.node.ip}, porta={self.node.porta})")
         orig = ("", self.node.porta)
         self.udp.bind(orig)
