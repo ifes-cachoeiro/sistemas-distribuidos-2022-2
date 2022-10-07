@@ -29,6 +29,7 @@ class ServidorP2P:
         print(f"=> Iniciando P2P Server (ip={self.node.ip}, porta={self.node.porta})")
         orig = ("", self.node.porta)
         self.udp.bind(orig)
+
         while True:
             msg, cliente = self.udp.recvfrom(1024)
             msg_decoded = msg.decode("utf-8")
