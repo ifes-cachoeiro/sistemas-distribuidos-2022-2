@@ -18,7 +18,6 @@ class Node:
 
 
 class ServidorP2P:
-
     def __init__(self, ip=None) -> None:
         self.node = Node(ip=sys.argv[1])
         self.udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -32,7 +31,7 @@ class ServidorP2P:
         self.udp.bind(orig)
         while True:
             msg, cliente = self.udp.recvfrom(1024)
-            msg_decoded = msg.decode('utf-8')
+            msg_decoded = msg.decode("utf-8")
             string_dict = json.loads(msg_decoded)
             if string_dict["codigo"] == 0:
                 pass
@@ -65,14 +64,8 @@ class ServidorP2P:
                 opc = int(input("=> "))
                 if opc == 1:
                     if not self.node._inicializado:
-                        self.node.sucessor = {
-                            "id": self.node.id,
-                            "ip": self.node.ip
-                        }
-                        self.node.antecessor = {
-                            "id": self.node.id,
-                            "ip": self.node.ip
-                        }
+                        self.node.sucessor = {"id": self.node.id, "ip": self.node.ip}
+                        self.node.antecessor = {"id": self.node.id, "ip": self.node.ip}
                         self.node._inicializado = True
                         print("Rede P2P Inicializada!")
                     else:
