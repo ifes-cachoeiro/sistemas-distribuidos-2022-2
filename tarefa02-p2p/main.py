@@ -26,7 +26,7 @@ class ServidorP2P:
         self.interface()
 
     def controle(self) -> None:
-        print(f"=> Iniciando servidor P2P (ip={self.node.ip}, porta={self.node.porta})")
+        print(f"=> Iniciando P2P Server (ip={self.node.ip}, porta={self.node.porta})")
         orig = ("", self.node.porta)
         self.udp.bind(orig)
         while True:
