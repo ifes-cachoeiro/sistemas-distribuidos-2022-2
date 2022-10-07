@@ -13,8 +13,8 @@ class Node:
         self.ip = ip
         self.id = hash(f"{ip}+rafael")
         self.porta = 12345
-        self.sucessor = None
-        self.antecessor = None
+        self.sucessor = {}
+        self.antecessor = {}
 
 
 class ServidorP2P:
@@ -22,8 +22,6 @@ class ServidorP2P:
     def __init__(self, ip=None) -> None:
         self.node = Node(ip=sys.argv[1])
         self.udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        # self.t1 = threading.Thread(target=self.servidor_p2p)
-        # self.t1.start()
         self.__t1 = mp.Process(target=self.servidor_p2p)
         self.__t1.start()
         self.interface()
