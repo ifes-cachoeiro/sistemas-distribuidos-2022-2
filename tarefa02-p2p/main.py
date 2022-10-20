@@ -1,7 +1,6 @@
 #!/usr/sbin/python3
 # -*- coding: utf-8 -*-
 import socket
-import multiprocessing as mp
 import _thread
 import json
 import sys
