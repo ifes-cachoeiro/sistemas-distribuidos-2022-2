@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import socket
 import multiprocessing as mp
+import _thread
 import json
 import sys
 import os
@@ -19,14 +20,13 @@ class Node:
 
 class ServidorP2P:
     def __init__(self, ip=None) -> None:
-        self.node = Node(ip=sys.argv[1])
+        self.node = Node(ip=ip)
         self.udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        self.__t1 = mp.Process(target=self.controle)
-        self.__t1.start()
+        _thread.start_new_thread(self.controle, (self,))
         self.interface()
 
     def controle(self) -> None:
-        print(f"=> Iniciando P2P Server (ip={self.node.ip}, porta={self.node.porta})")
+        print(f"=> Iniciando P2P (ip={self.node.ip}, porta={self.node.porta})")
         orig = ("", self.node.porta)
         self.udp.bind(orig)
 
@@ -90,7 +90,6 @@ class ServidorP2P:
                     print("#------------------------------#")
                     input("Pressione ENTER para continuar")
                 elif opc == 9:
-                    self.__t1.terminate()
                     sys.exit(0)
             except ValueError:
                 opc = 0
