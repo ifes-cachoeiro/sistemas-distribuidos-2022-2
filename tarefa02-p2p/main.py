@@ -5,6 +5,7 @@ import _thread
 import json
 import sys
 import os
+import time
 
 
 class Node:
@@ -21,7 +22,7 @@ class ServidorP2P:
     def __init__(self, ip=None) -> None:
         self.node = Node(ip=ip)
         self.udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        _thread.start_new_thread(self.controle, (self,))
+        self._t1 = _thread.start_new_thread(self.controle, ())
         self.interface()
 
     def controle(self) -> None:
