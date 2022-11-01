@@ -5,14 +5,15 @@ import _thread
 import json
 import sys
 import os
-import time
+from random import randint
 
 
 class Node:
     def __init__(self, ip):
         self._inicializado = False
         self.ip = ip
-        self.id = hash(f"{ip}+rafael")
+        # self.id = hash(f"{ip}+rafael")
+        self.id = randint(1000, 2000)
         self.porta = 12345
         self.sucessor = {}
         self.antecessor = {}
