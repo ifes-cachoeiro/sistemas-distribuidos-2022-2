@@ -4,6 +4,7 @@ app = Flask(__name__)
 
 lista_contato = []
 
+
 @app.route("/")
 def inicio():
     return "<h1> OLA MUNDO </h1>"
