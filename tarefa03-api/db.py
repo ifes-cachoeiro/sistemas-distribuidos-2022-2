@@ -6,8 +6,10 @@ from sqlalchemy.orm import sessionmaker
 NOME_BANCO = "meubanco"
 
 engine = create_engine(
-    f"sqlite:///./{NOME_BANCO}.sqlite", echo=True, 
-    connect_args={"check_same_thread": False})
+    f"sqlite:///./{NOME_BANCO}.sqlite",
+    echo=True,
+    connect_args={"check_same_thread": False},
+)
 Base = declarative_base()
 
 # Declaracao das classes

@@ -17,11 +17,7 @@ def cliente(id_cliente=None):
     if request.method == "GET":
         if id_cliente:
             try:
-                cliente = (
-                    session.query(Cliente)
-                    .filter(Cliente.id == id_cliente)
-                    .one()
-                )
+                cliente = session.query(Cliente).filter(Cliente.id == id_cliente).one()
                 return (
                     jsonify({"id": cliente.id, "nome": cliente.nome}),
                     200,
@@ -36,9 +32,7 @@ def cliente(id_cliente=None):
             return jsonify(lista_clientes), 200
     elif request.method == "POST":
         cliente = request.json
-        session.add(
-            Cliente(nome=cliente["nome"], endereco=cliente["endereco"])
-        )
+        session.add(Cliente(nome=cliente["nome"], endereco=cliente["endereco"]))
         session.commit()
         return "", 200
     elif request.method == "PUT":
@@ -49,9 +43,7 @@ def cliente(id_cliente=None):
         session.commit()
         return "", 200
     elif request.method == "DELETE":
-        session.query(Cliente).filter(
-            Cliente.id == id_cliente
-        ).delete()
+        session.query(Cliente).filter(Cliente.id == id_cliente).delete()
         session.commit()
         return "", 200
 
